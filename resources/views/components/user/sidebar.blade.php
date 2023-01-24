@@ -51,14 +51,15 @@
             <span>Pesan</span>
         </a>
         <ul class="submenu ">
-            <li class="submenu-item ">
-                <a href="#">Pesan masuk
-                
-                </span>
-            </a>
+            <li class="submenu-item  {{ request()->is('user/pesan/masuk*') ? 'active' : ' ' }} ">
+                <a href="{{ route('user.pesan.masuk') }}">Pesan masuk
+                    <span class="badge bg-light-danger badge-pill badge-round float-right mt-50">
+                        {{ count($pesan) }}
+               </span>
+                </a>
             </li>
-            <li class="submenu-item ">
-                <a href="#">Pesan terkirim</a>
+            <li class="submenu-item  {{ request()->is('user/pesan/terkirim*') ? 'active' : ' ' }}">
+                <a href="{{ route('user.pesan.terkirim') }}">Pesan terkirim</a>
             </li>
         </ul>
     </li>

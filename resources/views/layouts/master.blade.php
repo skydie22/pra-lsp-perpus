@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,6 +20,13 @@
       type="image/png"
     />
   </head>
+
+  @php 
+  use App\Models\Pesan;
+  $pesan = Pesan::where('penerima_id', Auth::user()->id)
+      ->where('status', 'terkirim')
+      ->get();
+@endphp
 
   <body>
     <div id="app">
@@ -141,10 +149,38 @@
                       class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="dropdownMenuButton"
                     >
+                    @php
+                    $pesans = \App\Models\Pesan::where('status' , 'terkirim')
+                                                                            ->where('pengirim_id' , '!=' , Auth::user()->id)
+                                                                            ->where('penerima_id' , Auth::user()->id)
+                                                                            ->orderBy('created_at' , 'desc')
+                                                                            ->get();
+                @endphp
                       <li>
                         <h6 class="dropdown-header">Mail</h6>
                       </li>
-                      <li><a class="dropdown-item" href="#">No new mail</a></li>
+                      @foreach ($pesans as $p)
+                      <form action="{{ route('user.pesan.masuk.update') }}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" type="submit"><input type="hidden" name="id" value="{{ $p->id }}">
+                          <div class="row">
+                            <div class="col-3">
+                                <div class="user-img d-flex align-items-center">
+                                    <div class="avatar avatar-lg"> <img
+                                            src="/assets/images/faces/1.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col ms-2">
+                                <p class="mb-0 font-bold">
+                                    {{ $p->pengirim->username }}</p>
+                                <p class="mt-0 mb-0 font-thin text-sm">
+                                    {{ $p->isi }}</p>
+                            </div>
+                        </div>
+                      </button>
+                        </form>
+                      @endforeach
                     </ul>
                   </li>
                   <li class="nav-item dropdown me-3">
@@ -261,6 +297,8 @@
       </div>
     </div>
     <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/app.js"></script>'
+    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/js/pages/simple-datatables.js"></script>'
   </body>
 </html>
