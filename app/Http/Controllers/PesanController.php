@@ -20,6 +20,13 @@ class PesanController extends Controller
         $pesanMasuk = Pesan::where('pengirim_id' , '!=' , Auth::user()->id)->where('penerima_id' , Auth::user()->id)->get();
         return view('user.pesan.masuk' , compact('pesanMasuk'));
     }
+    
+    public function indexAdminMasuk()
+    {
+        $pesanMasuk = Pesan::where('pengirim_id' , '!=', Auth::user()->id)->where('penerima_id' , Auth::user()->id)->get();
+
+        return view('admin.pesan.masuk' ,compact('pesanMasuk'));
+    }
 
     public function indexTerkirim()
     {
@@ -27,6 +34,14 @@ class PesanController extends Controller
         $penerima = User::where('role' , 'admin')->get();
 
         return view('user.pesan.terkirim' , compact('pesanTerkirim' , 'penerima'));
+    }
+
+    public function indexAdminTerkirim()
+    {
+        $pesanTerkirim = Pesan::where('penerima_Id' , '!=' , Auth::user()->id)->where('pengirim_id' , Auth::user()->id)->get();
+        $penerima = User::where('role' , 'user')->get();
+
+        return view('admin.pesan.terkirim' ,compact('pesanTerkirim' , 'penerima'));
     }
 
     /**
@@ -99,6 +114,17 @@ class PesanController extends Controller
 
         return redirect()->back();
     }
+
+    public function updateStatusAdmin(Request $request, Pesan $pesan)
+    {
+        $status = Pesan::where('id' , $request->id)->first();
+        $status->update([
+            'status' => 'terbaca'
+        ]);
+
+        return redirect()->back();
+    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -11,7 +11,8 @@ class Penerbit extends Model
 
     protected $fillable = [
         'kode',
-        'nama'
+        'nama',
+        'verif'
     ];
     
     public function bukus()

@@ -14,7 +14,7 @@ class RegisterController extends Controller
         $anggota = User::where('role' , 'user')->get();
         $count = count($anggota);
         $code = 'AA00' . $count + 1;
-        return view('auth.register' , compact('anggota' , 'code'));
+        return view('auth.register' , compact('anggota'));
     }
     
     public function store(Request $request)

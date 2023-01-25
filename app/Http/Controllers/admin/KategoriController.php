@@ -15,7 +15,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $kategori = Kategori::all();
+        $count = count($kategori);
+        $code = 'K00' . $count + 1;
+        return view('admin.buku.kategori' , compact('kategori' , 'code'));
     }
 
     /**
@@ -36,7 +39,15 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kategori =  Kategori::all();
+        $count = count($kategori);
+        $code = 'K00' . $count + 1;
+        $kategori = Kategori::create([
+            'kode' => $request->kode,
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -68,9 +79,15 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+
+        $kategori->update([
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +96,11 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect()->back();
+
     }
 }

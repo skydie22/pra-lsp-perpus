@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Identitas;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IdentitasController extends Controller
 {
@@ -14,8 +16,9 @@ class IdentitasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $identitas = Identitas::all();
+        return view('admin.identitas' , compact('identitas'));
     }
 
     /**
@@ -68,9 +71,14 @@ class IdentitasController extends Controller
      * @param  \App\Models\Identitas  $identitas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Identitas $identitas)
+    public function update(Request $request, $id)
     {
-        //
+        // $identitas = Identitas::find($id);
+        // $imageName = time().'.'.$request->foto->extension();
+        // $request->foto->move(public_path('img'),$imageName);
+        // $identitas->update($request->all());
+        // return redirect()->back();
+
     }
 
     /**

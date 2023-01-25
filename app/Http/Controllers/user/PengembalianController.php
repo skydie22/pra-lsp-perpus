@@ -62,14 +62,21 @@ class PengembalianController extends Controller
         }
 
         if ($request->kondisi_buku_saat_dikembalikan == 'hilang') {
+            $buku = Buku::where('id' , $request->buku_id)->first();
+            $buku->update([
+                'j_buku_baik' => $buku->j_buku_baik - 1
+
+            ]);
+
             $cek->update([
                 'denda' => 200000
             ]);
         }
 
-        Pemberitahuan::create([
-            'isi' => Auth::user()->username . " Berhasil Mengembalikan Buku " . $buku->judul
-        ]);
+        // Pemberitahuan::create([
+            
+        //     'isi' => Auth::user()->username . " Berhasil Mengembalikan Buku " . $buku->judul
+        // ]);
         
         return redirect()->route('user.pengembalian.riwayat');
     }

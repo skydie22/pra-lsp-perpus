@@ -13,9 +13,10 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dataBuku()
     {
-        //
+        $buku = Buku::all();
+        return view('admin.buku.data' , compact('buku'));
     }
 
     /**
@@ -34,9 +35,12 @@ class BukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeBuku(Request $request)
     {
-        //
+        $buku = Buku::all();
+        $buku = Buku::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -68,9 +72,12 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, $id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +86,10 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $buku)
+    public function destroy($id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect()->back();
     }
 }

@@ -184,14 +184,14 @@ class DataSeeder extends Seeder
             'foto' => ''
         ]);
 
-        Pemberitahuan::create([
-            'isi' => 'Sedang ada perbaikan server',
-            'status' => 'nonaktif',
-        ]);
+        // Pemberitahuan::create([
+        //     'isi' => 'Sedang ada perbaikan server',
+        //     'status' => 'nonaktif',
+        // ]);
 
-        Pemberitahuan::create([
-            'isi' => 'Sedang ada penambahan data di database',
-            'status' => 'aktif',
-        ]);
+        // Pemberitahuan::create([
+        //     'isi' => 'Sedang ada penambahan data di database',
+        //     'status' => 'aktif',
+        // ]);
     }
 }

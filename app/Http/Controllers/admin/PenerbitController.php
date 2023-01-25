@@ -15,7 +15,11 @@ class PenerbitController extends Controller
      */
     public function index()
     {
-        //
+
+        $penerbit = Penerbit::all();
+        $count = count($penerbit);
+        $code = 'P00' . $count + 1;
+        return view('admin.penerbit.index' , compact('penerbit' , 'code'));
     }
 
     /**
@@ -25,7 +29,7 @@ class PenerbitController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +40,17 @@ class PenerbitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $penerbit = Penerbit::all();
+        $count = count($penerbit);
+        $code = 'P00' . $count + 1;
+
+            $penerbit = Penerbit::create([
+                'kode' => $request->kode,
+                'nama' => $request->nama,
+                'verif' => 'verified'
+            ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -68,9 +82,14 @@ class PenerbitController extends Controller
      * @param  \App\Models\Penerbit  $penerbit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Penerbit $penerbit)
+    public function update(Request $request, $id)
     {
-        //
+        $penerbit = penerbit::findOrFail($id);
+        $penerbit->update([
+            'nama' => $request->nama,
+            
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +98,11 @@ class PenerbitController extends Controller
      * @param  \App\Models\Penerbit  $penerbit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Penerbit $penerbit)
+    public function destroy($id)
     {
-        //
+        $penerbit = penerbit::findOrFail($id);
+        $penerbit->delete();
+        return redirect()->back();
+
     }
 }

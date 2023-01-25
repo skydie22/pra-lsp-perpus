@@ -39,7 +39,7 @@
                 <a href="{{ route('admin.data.buku') }}">Data Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.kategori.buku') }}">Kategori Buku</a>
+                <a href="{{ route('admin.data.kategori') }}">Kategori Buku</a>
             </li>
         </ul>
     </li>
@@ -52,7 +52,7 @@
     </li>
 
     <li class="sidebar-item  ">
-        <a href="#" class='sidebar-link'>
+        <a href="{{ route('admin.identitas') }}" class='sidebar-link'>
             <i class="bi bi-file-earmark-medical-fill"></i>
             <span>Identitas Aplikasi</span>
         </a>
