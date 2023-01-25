@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\KategoriController;
 use App\Http\Controllers\admin\PeminjamanController as AdminPeminjamanController;
 use App\Http\Controllers\admin\PenerbitController;
 use App\Http\Controllers\PesanController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\PeminjamanController;
 use App\Http\Controllers\user\PengembalianController;
@@ -28,7 +29,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+// Route::get('/register' , [RegisterController::class , 'index'])->name('auth.register');
+Route::post('/register' , [RegisterController::class , 'store'])->name('auth.register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {

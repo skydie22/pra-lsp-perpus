@@ -28,6 +28,12 @@
       ->get();
 @endphp
 
+@php
+use App\Models\Pemberitahuan;
+$pemberitahuan = Pemberitahuan::all();
+@endphp
+
+
   <body>
     <div id="app">
       <div id="sidebar" class="active">
@@ -200,41 +206,24 @@
                       <li class="dropdown-header">
                         <h6>Notifications</h6>
                       </li>
+                      @foreach ($pemberitahuan as $infoPemberitahuan)
+                          
                       <li class="dropdown-item notification-item">
                         <a class="d-flex align-items-center" href="#">
                           <div class="notification-icon bg-primary">
                             <i class="bi bi-cart-check"></i>
                           </div>
                           <div class="notification-text ms-4">
-                            <p class="notification-title font-bold">
-                              Successfully check out
-                            </p>
+                            
                             <p class="notification-subtitle font-thin text-sm">
-                              Order ID #256
+                              {{ $infoPemberitahuan->isi }}
                             </p>
                           </div>
                         </a>
                       </li>
-                      <li class="dropdown-item notification-item">
-                        <a class="d-flex align-items-center" href="#">
-                          <div class="notification-icon bg-success">
-                            <i class="bi bi-file-earmark-check"></i>
-                          </div>
-                          <div class="notification-text ms-4">
-                            <p class="notification-title font-bold">
-                              Homework submitted
-                            </p>
-                            <p class="notification-subtitle font-thin text-sm">
-                              Algebra math homework
-                            </p>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <p class="text-center py-2 mb-0">
-                          <a href="#">See all notification</a>
-                        </p>
-                      </li>
+                      @endforeach
+                    
+                  
                     </ul>
                   </li>
                 </ul>

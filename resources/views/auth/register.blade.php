@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -24,6 +24,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -67,8 +68,47 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                        </div>--}}
+
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">nis</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="nis" required>               
+                         </div>
+
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">fullname</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="fullname" required>               
+                         </div>
+        
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">username</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="username" required>               
+                         </div>
+
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">password</label>
+                            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="" name="password" required>               
+                         </div>
+        
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">kelas</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="kelas" required>               
+                         </div>
+        
+                         <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">alamat</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="alamat" required>               
+                         </div>
+
+                         <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
                         </div>
-                    </form>
+
+                    </form> 
                 </div>
             </div>
         </div>

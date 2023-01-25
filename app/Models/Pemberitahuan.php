@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pemberitahuan extends Model
 {
     
+    protected $fillable = [
+        'isi'
+    ];
+    
     use HasFactory;
 }

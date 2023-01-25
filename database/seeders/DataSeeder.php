@@ -120,33 +120,7 @@ class DataSeeder extends Seeder
             'foto' => ''
         ]);
 
-        Peminjaman::create([
-            'user_id' => 3,
-            'buku_id' => 2,
-            'tanggal_peminjaman' => '2023-01-06',
-            'kondisi_buku_saat_dipinjam' => 'baik',
-            'kondisi_buku_saat_dikembalikan' => 'rusak',
-            'denda' => 100000
-        ]);
-
-        Peminjaman::create([
-            'user_id' => 2,
-            'buku_id' => 3,
-            'tanggal_peminjaman' => '2023-01-06',
-            'tanggal_pengembalian' => '2023-01-06',
-            'kondisi_buku_saat_dipinjam' => 'baik',
-            'kondisi_buku_saat_dikembalikan' => 'baik',
-        ]);
-
-        Peminjaman::create([
-            'user_id' => 2,
-            'buku_id' => 3,
-            'tanggal_peminjaman' => '2023-01-01',
-            'tanggal_pengembalian' => '2023-02-10',
-            'kondisi_buku_saat_dipinjam' => 'baik',
-            'kondisi_buku_saat_dikembalikan' => 'baik',
-            'denda' => 0,
-        ]);
+       
 
         Pesan::create([
             'pengirim_id' => 1,

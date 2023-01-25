@@ -5,6 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Models\Peminjaman;
 use App\Http\Controllers\Controller;
 use App\Models\Buku;
+use App\Models\Pemberitahuan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,6 +77,10 @@ class PeminjamanController extends Controller
             ]);
         }
 
+        Pemberitahuan::create([
+            'isi' => Auth::user()->username . " Berhasil Meminjam Buku " . $buku->judul
+        ]);
+        
         return redirect()->route('user.peminjaman.riwayat');
 
     }
