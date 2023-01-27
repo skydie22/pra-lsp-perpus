@@ -11,9 +11,11 @@ class Identitas extends Model
         'nama_app',
         'alamat_app',
         'email_app',
-        'nomor-hp',
+        'nomor_hp',
         'foto'
     ];
+
+    public $timestamps = false;
     
     use HasFactory;
 }

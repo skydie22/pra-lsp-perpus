@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Buku;
 use App\Http\Controllers\Controller;
+use App\Models\Kategori;
+use App\Models\Penerbit;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -16,7 +18,9 @@ class BukuController extends Controller
     public function dataBuku()
     {
         $buku = Buku::all();
-        return view('admin.buku.data' , compact('buku'));
+        $kategoris = Kategori::all();
+        $penerbit = Penerbit::all();
+        return view('admin.buku.data' , compact('buku','kategoris','penerbit'));
     }
 
     /**

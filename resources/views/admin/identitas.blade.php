@@ -5,16 +5,15 @@
         <h3>Identitas Aplikasi</h3>
     </center>
 </div>
-{{-- <div class="mb-3">
+<div class="mb-3">
   <center>
-    <img src="/img/{{ Auth::user()->foto == null ? 'profile.png' : Auth::user()->foto  }}" class="rounded-circle" style="width: 150px;"
+    <img src="{{ $identitas->foto }}" class="rounded-circle" style="width: 150px;"
       alt="Avatar" />
 
   </center>
 
-</div> --}}
+</div>
 
-@foreach ($identitas as $i)
     <div class="col-md-12 col-12">
     <div class="card">
       <div class="card-header">
@@ -48,7 +47,7 @@
                       type="text"
                       class="form-control"
                       name="nama_app"
-                      value="{{ $i->nama_app }}"
+                      value="{{ $identitas->nama_app }}"
                     
                     />
                   </div>
@@ -68,7 +67,7 @@
                         name="alamat_app"
                         id="exampleFormControlTextarea1"
                         rows="3"
-                      >{{ $i->alamat_app }}</textarea>
+                      >{{ $identitas->alamat_app }}</textarea>
                       {{-- <input
                         type="text"
                         class="form-control"
@@ -87,7 +86,7 @@
                         type="email"
                         class="form-control"
                         name="email_app"
-                        value="{{ $i->nama_app }}"
+                        value="{{ $identitas->email_app }}"
                       
                       />
                     </div>
@@ -102,7 +101,7 @@
                         type="number"
                         class="form-control"
                         name="nomor_hp"
-                        value="{{ $i->nomor_hp }}"
+                        value="{{ $identitas->nomor_hp }}"
                       
                       />
                     </div>
@@ -124,7 +123,5 @@
       </div>
     </div>
   </div>
-
-  @endforeach
 
 @endsection

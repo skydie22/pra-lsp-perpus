@@ -37,9 +37,9 @@
                     <td>{{ $p->tanggal_kirim }}</td>
                     <td>
                         @if ($p->status == 'terkirim')
-                            <form action="{{ route('user.pesan.masuk.update') }}" method="POST">
+                            <form action="{{ route('user.pesan.masuk.update', ['id' => $p->id]) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="penerima_id" value="{{ Auth::user()->id }}">
                                 <button type="submit" class="btn btn-primary"><i class="bi bi-check"></i>
                                 </button>
                                 

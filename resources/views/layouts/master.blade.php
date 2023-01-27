@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/assets/css/main/app.css" />
     <link rel="stylesheet" href="/assets/css/main/app-dark.css" />
 
+    <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
+
+
     <link
       rel="shortcut icon"
       href="/assets/images/logo/favicon.svg"
@@ -20,6 +23,7 @@
       type="image/png"
     />
   </head>
+
 
   @php 
   use App\Models\Pesan;
@@ -37,6 +41,7 @@ $pemberitahuan = Pemberitahuan::all();
   <body>
     <div id="app">
       <div id="sidebar" class="active">
+
         <div class="sidebar-wrapper active">
           <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
@@ -288,6 +293,6 @@ $pemberitahuan = Pemberitahuan::all();
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>'
     <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/js/pages/simple-datatables.js"></script>'
+    <script src="/assets/js/pages/simple-datatables.js"></script>
   </body>
 </html>

@@ -76,6 +76,22 @@ class PesanController extends Controller
         return redirect()->back();
     }
 
+    public function kirimPesanAdmin(Request $request)
+    {
+        $pesanTerkirim = Pesan::where('penerima_Id' , '!=', Auth::user()->id)->where('pengirim_id' , Auth::user()->id)->get();
+        $penerima = User::where('role' , 'user')->get();
+        $pesanTerkirim = Pesan::create([
+            'penerima_id' => $request->penerima_id,
+            'pengirim_id' => $request->pengirim_id,
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'status' => 'terkirim',
+            'tanggal_kirim' => Carbon::now()
+        ]);
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      *

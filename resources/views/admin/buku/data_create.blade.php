@@ -19,8 +19,8 @@
 
                     <option >Pilih Opsi</option>
                 
-                    @foreach($buku as $b) 
-                    <option value="{{$b->kategori->id}}" >{{$b->kategori->nama}}</option>
+                    @foreach($kategoris as $k) 
+                    <option value="{{$k->id}}" >{{$k->nama}}</option>
  
                     @endforeach
                 </select>            
@@ -32,8 +32,8 @@
 
                     <option >Pilih Opsi</option>
                 
-                    @foreach($buku as $b) 
-                    <option value="{{$b->penerbit->id}}" >{{$b->penerbit->nama}}</option>
+                    @foreach($penerbit as $p) 
+                    <option value="{{$p->id}}" >{{$p->nama}}</option>
  
                     @endforeach
                 </select>            
