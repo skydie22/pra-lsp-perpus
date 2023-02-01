@@ -28,7 +28,7 @@
                                 <select name="buku_id" id="" class="form-select">
 
                                     <option >Pilih Opsi</option>
-                                    @foreach ( $judulBuku as $j)
+                                    @foreach ( $judulBuku->unique('buku_id') as $j)
                                             <option value="{{ $j->buku->id }}">{{ $j->buku->judul }}</option>
                                     @endforeach
                                 </select>

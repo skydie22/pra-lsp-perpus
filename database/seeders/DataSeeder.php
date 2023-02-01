@@ -59,31 +59,31 @@ class DataSeeder extends Seeder
         //     'verif' => 'verified',
         // ]);
 
-        // Kategori::create([
-        //     'kode' => 'umum',
-        //     'nama' => 'Umum'
-        // ]);
-        // Kategori::create([
-        //     'kode' => 'sains',
-        //     'nama' => 'Sains'
-        // ]);
-        // Kategori::create([
-        //     'kode' => 'sejarah',
-        //     'nama' => 'Sejarah'
-        // ]);
+        Kategori::create([
+            'kode' => 'umum',
+            'nama' => 'Umum'
+        ]);
+        Kategori::create([
+            'kode' => 'sains',
+            'nama' => 'Sains'
+        ]);
+        Kategori::create([
+            'kode' => 'sejarah',
+            'nama' => 'Sejarah'
+        ]);
 
-        // Penerbit::create([
-        //     'kode' => 'erlangga',
-        //     'nama' => 'Erlangga'
-        // ]);
-        // Penerbit::create([
-        //     'kode' => 'bukunesia',
-        //     'nama' => 'Bukunesia'
-        // ]);
-        // Penerbit::create([
-        //     'kode' => 'gramedia',
-        //     'nama' => 'Gramedia'
-        // ]);
+        Penerbit::create([
+            'kode' => 'erlangga',
+            'nama' => 'Erlangga'
+        ]);
+        Penerbit::create([
+            'kode' => 'bukunesia',
+            'nama' => 'Bukunesia'
+        ]);
+        Penerbit::create([
+            'kode' => 'gramedia',
+            'nama' => 'Gramedia'
+        ]);
 
 
         // Buku::create([
@@ -108,17 +108,17 @@ class DataSeeder extends Seeder
         //     'j_buku_rusak' => 5,
         //     'foto' => ''
         // ]);
-        // Buku::create([
-        //     'judul' => 'Sejarah terbentuknya PKI',
-        //     'kategori_id' => 3,
-        //     'penerbit_id' => 3,
-        //     'pengarang' => 'Aldy YGY',
-        //     'tahun_terbit' => '2022',
-        //     'isbn' => '556677',
-        //     'j_buku_baik' => 30,
-        //     'j_buku_rusak' => 10,
-        //     'foto' => ''
-        // ]);
+        Buku::create([
+            'judul' => 'Sejarah terbentuknya PKI',
+            'kategori_id' => 3,
+            'penerbit_id' => 3,
+            'pengarang' => 'Aldy YGY',
+            'tahun_terbit' => '2022',
+            'isbn' => '556677',
+            'j_buku_baik' => 30,
+            'j_buku_rusak' => 10,
+            'foto' => ''
+        ]);
 
        
 
