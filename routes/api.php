@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\peminjamanApiController;
+use App\Http\Controllers\API\pengembalianApiController;
 use App\Http\Controllers\API\pesanApiController;
+use App\Http\Controllers\API\userApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,15 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('/login', [userApiController::class, 'login']);
 
-Route::prefix('user')->middleware(['auth','role:user'])->group(function () {
-Route::get('/pesan' , [pesanApiController::class, 'index']);
-Route::post('/pesan/store', [pesanApiController::class, 'store']);
-Route::post('/pesan/update', [pesanApiController::class, 'update']);
-Route::get('/peminjaman', [peminjamanApiController::class, 'index']);
-Route::post('/peminjaman/store', [peminjamanApiController::class, 'store']);
-
+Route::middleware(['auth:sanctum' , 'role:user'])->prefix('user')->group(function() {
+    Route::post('/logout', [userApiController::class, 'logout']);
+    Route::prefix('peminjaman')->controller(peminjamanApiController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::post('/store','store');
+    });
+    Route::prefix('pengembalian')->controller(pengembalianApiController::class)->group(function() {
+        Route::get('/','index');
+        Route::post('/store','store');
+    });
+    Route::prefix('pesan')->controller(pesanApiController::class)->group(function(){
+        Route::get('/','index');
+    });
 });
