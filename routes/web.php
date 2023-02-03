@@ -107,5 +107,10 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
     Route::post('/laporan/tanggal_pengembalian/cetak', [LaporanKontroller::class, 'cetakPengembalian'])->name('admin.cetak.pengembalian');
     Route::post('/laporan/anggota/cetak', [LaporanKontroller::class, 'cetakPeranggota'])->name('admin.cetak.anggota');
 
+    Route::post('/laporan/excel/tanggal_peminjaman/cetak', [LaporanKontroller::class, 'exportPeminjamanExcel'])->name('admin.cetak.peminjaman.excel');
+    Route::post('/laporan/excel/tanggal_pengenbalian/cetak', [LaporanKontroller::class, 'exportPengembalianExcel'])->name('admin.cetak.pengembalian.excel');
+    Route::post('/laporan/excel/anggota/cetak', [LaporanKontroller::class, 'exportAnggotaExcel'])->name('admin.cetak.anggota.excel');
+
+
  
  });

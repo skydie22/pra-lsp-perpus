@@ -37,3 +37,10 @@ Route::middleware(['auth:sanctum' , 'role:user'])->prefix('user')->group(functio
         Route::get('/','index');
     });
 });
+
+Route::middleware(['auth:sanctum','role:admin'])->prefix('admin')->group(function() {
+    Route::post('/logout', [userApiController::class, 'logout']);
+    Route::get('/', [userApiController::class, 'allAdmin']);
+    Route::post('/tambah_admin', [userApiController::class, 'tambahAdmin']);
+    Route::post('/edit_admin/{id}', [userApiController::class, 'destroyAdmin']);
+});

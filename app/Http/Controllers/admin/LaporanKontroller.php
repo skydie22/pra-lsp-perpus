@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Exports\AnggotaExport;
+use App\Exports\PeminjamanExport;
+use App\Exports\PengembalianExport;
 use App\Http\Controllers\Controller;
 use App\Models\Peminjaman;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanKontroller extends Controller
 {
@@ -52,5 +56,22 @@ class LaporanKontroller extends Controller
         $data = Peminjaman::where('user_id' , $request->user_id)->with('buku' , 'user')->get();
         $pdf = Pdf::loadview('admin.laporan.laporan_peranggota', ['data' => $data]);
         return $pdf->download('laporan-perpus.pdf');
+    }
+
+    //excel
+    public function exportPeminjamanExcel(Request $request)
+    {
+        // dd($request);
+        return Excel::download(new PeminjamanExport($request), 'laporan-perpus.xlsx');
+    }
+
+    public function exportPengembalianExcel(Request $request)
+    {
+        return Excel::download(new PengembalianExport($request), 'laporan-perpus.xlsx');
+    }
+
+    public function exportAnggotaExcel(Request $request)
+    {
+        return Excel::download(new AnggotaExport($request), 'laporan-perpus.xlsx');
     }
 }

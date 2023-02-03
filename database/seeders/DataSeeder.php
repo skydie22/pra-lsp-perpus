@@ -22,7 +22,7 @@ class DataSeeder extends Seeder
     public function run()
     {
         User::create([
-            'kode' => 'Admin1',
+            'kode' => 'AA001',
             'fullname' => 'Admin Satu',
             'username' => 'Admin',
             'password' => bcrypt('password'),
@@ -32,7 +32,7 @@ class DataSeeder extends Seeder
             'verif' => 'verified'
         ]);
         User::create([
-            'kode' => 'AA001',
+            'kode' => 'UU001',
             'nis' => '112233',
             'fullname' => 'Ezhar Mahesa',
             'username' => 'ezhar',
