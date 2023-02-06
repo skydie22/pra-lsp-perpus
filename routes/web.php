@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 
@@ -46,7 +46,10 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
     Route::get('/dashboard' , [DashboardController::class , 'index'])->name('user.dashboard');
     // peminjaman
     Route::get('peminjaman/form' , [PeminjamanController::class, 'indexForm'])->name('user.peminjaman.form');
+    Route::post('peminjaman/form' , [PeminjamanController::class, 'form'])->name('user.peminjaman.form');
+
     Route::get('/peminjaman/riwayat' , [PeminjamanController::class, 'indexRiwayat'])->name('user.peminjaman.riwayat');
+
     Route::post('/peminjaman/form/submit' , [PeminjamanController::class , 'storeForm'])->name('user.peminjaman.form.submit');
     //pengembalian
     Route::get('/pengembalian/form' , [PengembalianController::class , 'indexForm'])->name('user.pengembalian,form');

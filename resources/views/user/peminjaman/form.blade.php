@@ -30,7 +30,7 @@
                                     <option >Pilih Opsi</option>
                                 
                                     @foreach($buku as $b) 
-                                    <option value="{{$b->id}}" >{{$b->judul}}</option>
+                                    <option value="{{$b->id}}" {{ isset($buku_id) ? $buku_id ==$b->id ? "selected" : "" : "" }} >{{$b->judul}}</option>
                  
                                     @endforeach
                                 </select>

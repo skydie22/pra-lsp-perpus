@@ -12,11 +12,13 @@
 		}
 	</style>
 	<center>
-		<h5>Membuat Laporan PDF Dengan DOMPDF Laravel</h4>
-		<h6><a target="_blank" href="https://www.malasngoding.com/membuat-laporan-…n-dompdf-laravel/">www.malasngoding.com</a></h5>
+    <h4>Laporan Perpustakaan</h4>
+    <p style="font-weight:bold">{{ $identitas->nama_app }}</p>
+    <p style="font-weight:bold">{{ $identitas->alamat_app }}|{{ $identitas->nomor_hp }}</p><br>
 	</center>
  
 	<table class='table table-bordered'>
+
 		<thead>
             <tr>
               <th>No</th>

@@ -7,17 +7,24 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Laporan Perpustakaan</h1>
+    <h4>{{ $identitas->nama_app }}</h4>
+    <h4>{{ $identitas->alamat_app }}|{{ $identitas->nomor_hp }}</h4>
+    <br>
+
+
     <table class='table table-bordered'>
         <thead>
             <tr>
-                <th>No</th>
-                <th>Nama Anggota</th>
-                <th>Judul Buku</th>
-                <th>Tanggal Peminjaman</th>
-                <th>Tanggal Pengembalian</th>
-                <th>Kondisi Buku Saat Dipinjam</th>
-                <th>Kondisi Buku Saat Dikembalikan</th>
-                <th>Denda</th>
+                <th style="border: 1px solid black">No</th>
+                <th style="border: 1px solid black">Nama Anggota</th>
+                <th style="border: 1px solid black">Judul Buku</th>
+                <th style="border: 1px solid black">Tanggal Peminjaman</th>
+                <th style="border: 1px solid black">Tanggal Pengembalian</th>
+                <th style="border: 1px solid black">Kondisi Buku Saat Dipinjam</th>
+                <th style="border: 1px solid black">Kondisi Buku Saat Dikembalikan</th>
+                <th style="border: 1px solid black">Denda</th>
 
             </tr>
         </thead>

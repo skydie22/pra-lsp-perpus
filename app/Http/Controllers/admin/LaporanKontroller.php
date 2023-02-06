@@ -6,6 +6,7 @@ use App\Exports\AnggotaExport;
 use App\Exports\PeminjamanExport;
 use App\Exports\PengembalianExport;
 use App\Http\Controllers\Controller;
+use App\Models\Identitas;
 use App\Models\Peminjaman;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -33,9 +34,10 @@ class LaporanKontroller extends Controller
     public function cetakPeminjaman(Request $request)
     {
         $data = Peminjaman::where('tanggal_peminjaman' , $request->tanggal_peminjaman)->get();
-        
+        $identitas = Identitas::first();
 
-                $pdf = Pdf::loadview('admin.laporan.laporan_peminjaman', ['data' => $data]);
+
+                $pdf = Pdf::loadview('admin.laporan.laporan_peminjaman', ['data' => $data, 'identitas' => $identitas]);
                 return $pdf->download('laporan-perpus.pdf');
 
     }
@@ -44,8 +46,9 @@ class LaporanKontroller extends Controller
     public function cetakPengembalian(Request $request)
     {
         $data = Peminjaman::where('tanggal_pengembalian', $request->tanggal_pengembalian)->get();
-        
-        $pdf = Pdf::loadview('admin.laporan.laporan_pengembalian', ['data' => $data]);
+        $identitas = Identitas::first();
+
+        $pdf = Pdf::loadview('admin.laporan.laporan_pengembalian', ['data' => $data,'identitas' => $identitas]);
         return $pdf->download('laporan-perpus.pdf');
 
     }
@@ -54,7 +57,9 @@ class LaporanKontroller extends Controller
     {
         // $data = User::where('role' , 'user');
         $data = Peminjaman::where('user_id' , $request->user_id)->with('buku' , 'user')->get();
-        $pdf = Pdf::loadview('admin.laporan.laporan_peranggota', ['data' => $data]);
+        $identitas = Identitas::first();
+
+        $pdf = Pdf::loadview('admin.laporan.laporan_peranggota', ['data' => $data, 'identitas' => $identitas]);
         return $pdf->download('laporan-perpus.pdf');
     }
 

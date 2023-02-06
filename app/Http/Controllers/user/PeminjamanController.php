@@ -34,7 +34,7 @@ class PeminjamanController extends Controller
     public function form(Request $request)
     {
         $buku = Buku::all();
-        $buku_Id = $request->buku_Id;
+        $buku_id = $request->buku_id;
         return view('user.peminjaman.form' , compact('buku' , 'buku_id'));
 
     }
