@@ -28,6 +28,7 @@ class userApiController extends Controller
 
     public function login(Request $request)
     {
+        $lastLogin = Carbon::now();
         $credentials = [
             'username' => $request['username'],
             'password' => $request['password']
@@ -45,12 +46,16 @@ class userApiController extends Controller
                 'msg' => 'user unverified'
             ]);
         }
+
+        $user = tap(User::where('id' , Auth::user()->id)->update([
+            'terakhir_login' => $lastLogin
+        ]));
         
         return response()->json([
             'data' => Auth::user(),
             'token' => auth()->user()->createToken('secret')->plainTextToken
         ]
-        );
+        );  
     }
 
     //admin
