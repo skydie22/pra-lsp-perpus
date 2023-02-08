@@ -91,6 +91,9 @@ class PengembalianController extends Controller
 
             return redirect()->back();
         }
+        Pemberitahuan::create([
+            'isi' => Auth::user()->username . " Berhasil Mengembalikan Buku " . $buku->judul
+        ]);
         return redirect()->route('user.pengembalian.riwayat');
     }
 

@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\API\bukuApiController;
+use App\Http\Controllers\API\IdentitasApiController;
 use App\Http\Controllers\API\KategoriApiController;
 use App\Http\Controllers\API\peminjamanApiController;
 use App\Http\Controllers\API\PenerbitApiController;
 use App\Http\Controllers\API\pengembalianApiController;
 use App\Http\Controllers\API\pesanApiController;
+use App\Http\Controllers\API\ProfileApiController;
 use App\Http\Controllers\API\userApiController;
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
@@ -40,6 +42,11 @@ Route::middleware(['auth:sanctum' , 'role:user'])->prefix('user')->group(functio
     Route::prefix('pesan')->controller(pesanApiController::class)->group(function(){
         Route::get('/','index');
     });
+    Route::prefix('/profil')->controller(ProfileApiController::class)->group(function () {
+        Route::get('/','index');
+        Route::post('/update','update');
+    });
+
 });
 
 Route::middleware(['auth:sanctum','role:admin'])->prefix('admin')->group(function() {
@@ -47,6 +54,10 @@ Route::middleware(['auth:sanctum','role:admin'])->prefix('admin')->group(functio
     Route::get('/', [userApiController::class, 'allAdmin']);
     Route::post('/tambah_admin', [userApiController::class, 'tambahAdmin']);
     Route::post('/edit_admin/{id}', [userApiController::class, 'destroyAdmin']);
+    Route::prefix('identitas')->controller(IdentitasApiController::class)->group(function () {
+        Route::get('/','index');
+        Route::post('/store','store');
+    });
     //kategori
     Route::prefix('kategori')->controller(KategoriApiController::class)->group(function () {
         Route::get('/' , 'index');

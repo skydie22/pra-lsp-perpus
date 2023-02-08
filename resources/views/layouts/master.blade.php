@@ -26,7 +26,7 @@ $pesan = Pesan::where('penerima_id', Auth::user()->id)
 
 @php
 use App\Models\Pemberitahuan;
-$pemberitahuan = Pemberitahuan::all();
+$pemberitahuan = Pemberitahuan::orderBy('id', 'DESC')->take(5)->get();
 @endphp
 
 
@@ -36,10 +36,8 @@ $pemberitahuan = Pemberitahuan::all();
 
       <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="logo">
-              <a href="index.html"><img src="/assets/images/logo/logo.svg" alt="Logo" srcset="" /></a>
-            </div>
+          <div class="d-flex justify-content-center align-items-center">
+           
             <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                 role="img" class="iconify iconify--system-uicons" width="20" height="20"
