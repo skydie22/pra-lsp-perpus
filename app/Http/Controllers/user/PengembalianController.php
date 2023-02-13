@@ -18,7 +18,7 @@ class PengembalianController extends Controller
     }
 
     public function indexRiwayat()
-    {   
+    {
         $pengembalian = Peminjaman::where('user_id' , Auth::user()->id)->get();
         // dd($pengembalian);
         return view('user.pengembalian.riwayat' , compact('pengembalian'));
@@ -55,8 +55,8 @@ class PengembalianController extends Controller
             ]);
         }
 
+        $buku = Buku::where('id', $request->buku_id)->first();
         if ($request->kondisi_buku_saat_dikembalikan == 'rusak' && $cek->kondisi_buku_saat_dipinjam == 'baik') {
-            $buku = Buku::where('id', $request->buku_id)->first();
 
             $buku->update([
                 'j_buku_rusak' => $buku->j_buku_rusak + 1
