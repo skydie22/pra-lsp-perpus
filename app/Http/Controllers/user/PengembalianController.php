@@ -42,8 +42,9 @@ class PengembalianController extends Controller
             'kondisi_buku_saat_dikembalikan' => $request->kondisi_buku_saat_dikembalikan
         ]);
 
+        $buku = Buku::where('id', $request->buku_id)->first();
+
         if ($request->kondisi_buku_saat_dikembalikan == 'baik' && $cek->kondisi_buku_saat_dipinjam == "baik") {
-            $buku = Buku::where('id', $request->buku_id)->first();
 
             $buku->update([
                 'j_buku_baik' => $buku->j_buku_baik + 1
@@ -55,7 +56,6 @@ class PengembalianController extends Controller
             ]);
         }
 
-        $buku = Buku::where('id', $request->buku_id)->first();
         if ($request->kondisi_buku_saat_dikembalikan == 'rusak' && $cek->kondisi_buku_saat_dipinjam == 'baik') {
 
             $buku->update([
@@ -69,7 +69,6 @@ class PengembalianController extends Controller
         }
 
         if ($request->kondisi_buku_saat_dikembalikan == 'rusak' && $cek->kondisi_buku_saat_dipinjam == 'rusak') {
-            $buku = Buku::where('id', $request->buku_id)->first();
 
             $buku->update([
                 'j_buku_rusak' => $buku->j_buku_rusak + 1
