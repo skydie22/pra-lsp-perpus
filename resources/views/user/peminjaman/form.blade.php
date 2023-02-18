@@ -28,10 +28,10 @@
                                 <select name="buku_id" id="" class="form-select">
 
                                     <option >Pilih Opsi</option>
-                                
-                                    @foreach($buku as $b) 
+
+                                    @foreach($buku as $b)
                                     <option value="{{$b->id}}" {{ isset($buku_id) ? $buku_id ==$b->id ? "selected" : "" : "" }} >{{$b->judul}}</option>
-                 
+
                                     @endforeach
                                 </select>
                             </div>
@@ -55,9 +55,9 @@
                                     <option value="" disabled selected >Pilih Opsi</option>
                                     <option value="baik">Baik</option>
                                     <option value="rusak">rusak</option>
-                                </select>  
+                                </select>
                             </div>
-                            
+
                             </div>
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

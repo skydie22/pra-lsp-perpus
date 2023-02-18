@@ -42,7 +42,7 @@ Route::middleware(['auth:sanctum' , 'role:user'])->prefix('user')->group(functio
     Route::prefix('pesan')->controller(pesanApiController::class)->group(function(){
         Route::get('/','index');
     });
-    Route::prefix('/profil')->controller(ProfileApiController::class)->group(function () {
+    Route::prefix('/profile')->controller(ProfileApiController::class)->group(function () {
         Route::get('/','index');
         Route::post('/update','update');
     });
@@ -56,7 +56,7 @@ Route::middleware(['auth:sanctum','role:admin'])->prefix('admin')->group(functio
     Route::post('/edit_admin/{id}', [userApiController::class, 'destroyAdmin']);
     Route::prefix('identitas')->controller(IdentitasApiController::class)->group(function () {
         Route::get('/','index');
-        Route::post('/store','store');
+        Route::post('/update','update');
     });
     //kategori
     Route::prefix('kategori')->controller(KategoriApiController::class)->group(function () {

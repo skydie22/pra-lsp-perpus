@@ -6,27 +6,37 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileApiController extends Controller
 {
     public function index()
     {
-        $profil = User::where('id', Auth::user()->id)->get();
+        $profile = User::where('id', Auth::user()->id)->get();
 
         return response()->json([
-            'data' => $profil
+            'data' => $profile
         ]);
     }
 
     public function update(Request $request)
     {
         $id = Auth::user()->id;
-        $user = User::find($id)->update($request->all());
 
-        return response()->json([
-            'msg' => 'data updated',
-            'data' => $user
+        $imageName = time() . '.' . $request->foto->extension();
+
+        $request->foto->move(public_path('img/profile/'), $imageName);
+
+        $user = User::find(Auth::user()->id)->update($request->all());
+
+        $user2 = User::find($id)->update([
+            "password" => Hash::make($request->password),
+            "foto" => $imageName
         ]);
-
+        if ($user && $user2) {
+            return response()->json([
+                "message" => "Successfully edit data",
+            ]);
+        }
     }
 }

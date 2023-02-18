@@ -7,7 +7,7 @@
 </div>
 <div class="mb-3">
   <center>
-    <img src="{{ $identitas->foto }}" class="rounded-circle" style="width: 150px;"
+    <img src="/img/identitas/{{ $identitas->foto }}" class="rounded-circle" style="width: 150px;"
       alt="Avatar" />
 
   </center>
@@ -40,7 +40,7 @@
 
                 <div class="col-12">
                   <div class="form-group">
-                    <label 
+                    <label
                       >Nama Aplikasi</label
                     >
                     <input
@@ -48,13 +48,13 @@
                       class="form-control"
                       name="nama_app"
                       value="{{ $identitas->nama_app }}"
-                    
+
                     />
                   </div>
                 </div>
-              
-                
-            
+
+
+
                   <div class="col-12">
                     <div class="form-group">
                         <label
@@ -79,7 +79,7 @@
 
                   <div class="col-12">
                     <div class="form-group">
-                      <label 
+                      <label
                         >Email</label
                       >
                       <input
@@ -87,14 +87,14 @@
                         class="form-control"
                         name="email_app"
                         value="{{ $identitas->email_app }}"
-                      
+
                       />
                     </div>
                   </div>
 
                   <div class="col-12">
                     <div class="form-group">
-                      <label 
+                      <label
                         >No Telepon</label
                       >
                       <input
@@ -102,12 +102,12 @@
                         class="form-control"
                         name="nomor_hp"
                         value="{{ $identitas->nomor_hp }}"
-                      
+
                       />
                     </div>
                   </div>
-              
-                  
+
+
                 <div class="col-12 d-flex justify-content-start">
                   <button
                     type="submit"

@@ -19,15 +19,30 @@ class IdentitasApiController extends Controller
 
     public function update(Request $request)
     {
-        $identitas = Identitas::update([
-            'nama_app' => $request->nama_app,
-            'alamat_app' => $request->alamat_app,
-            'email_app' => $request->email_app,
-            'nomor_hp' => $request->nomor_hp
-        ]);
+        $identitas = Identitas::first();
+
+        if ($request->foto == null) {
+            $identitas->update([
+                'nama_app' => $request->nama_app,
+                'email_app' => $request->email_app,
+                'nomor_hp' => $request->nomor_hp,
+                'alamat_app' => $request->alamat_app,
+            ]);
+        } else {
+            $imageName = time() . '.' . $request->foto->extension();
+            $request->foto->move(public_path('img/identitas/'), $imageName);
+            $identitas->update([
+                'nama_app' => $request->nama_app,
+                'email_app' => $request->email_app,
+                'nomor_hp' => $request->nomor_hp,
+                'alamat_app' => $request->alamat_app,
+                "foto" => $imageName
+            ]);
+        }
 
         return response()->json([
-            'msg' => 'identitas updated'
+            'msg' => 'Berhasil mengedit identitas',
+            'data' => $identitas
         ]);
     }
 }

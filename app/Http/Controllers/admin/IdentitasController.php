@@ -16,7 +16,7 @@ class IdentitasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $identitas = Identitas::first();
         // dd($identitas);
         return view('admin.identitas' , compact('identitas'));
@@ -78,12 +78,12 @@ class IdentitasController extends Controller
         if ($request->foto != null) {
             $imageName = time() . '.' . $request->foto->extension();
 
-            $request->foto->move(public_path('img'), $imageName);
+            $request->foto->move(public_path('img/identitas/'), $imageName);
 
             $user = Identitas::find(1)->update($request->all());
 
             $user2 = Identitas::find(1)->update([
-                "foto" => "/img/" . $imageName
+                "foto" => $imageName
             ]);
 
             if ($user && $user2) {
@@ -95,14 +95,14 @@ class IdentitasController extends Controller
             return redirect()->back();
         }
 
-    
+
 
 
         // return redirect()->back()->with("status", "danger")->with('message', 'Gagal mengubah profile');
     }
-      
 
-    
+
+
 
     /**
      * Remove the specified resource from storage.

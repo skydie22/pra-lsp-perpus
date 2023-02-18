@@ -80,7 +80,7 @@ class UserController extends Controller
         $admin = User::where('role' , 'admin')->where('id' , $id);
         $admin->update([
             'fullname' => $request->fullname,
-            'username' => $request->username,
+            'username' => $request->username
         ]);
         return redirect()->back();
 

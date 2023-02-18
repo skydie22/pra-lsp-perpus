@@ -50,12 +50,12 @@ class userApiController extends Controller
         $user = tap(User::where('id' , Auth::user()->id)->update([
             'terakhir_login' => $lastLogin
         ]));
-        
+
         return response()->json([
             'data' => Auth::user(),
             'token' => auth()->user()->createToken('secret')->plainTextToken
         ]
-        );  
+        );
     }
 
     //admin
@@ -175,5 +175,5 @@ class userApiController extends Controller
         ]);
     }
 
-    
+
 }

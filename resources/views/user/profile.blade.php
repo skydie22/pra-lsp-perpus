@@ -7,7 +7,7 @@
 </div>
 <div class="mb-3">
   <center>
-    <img src="/img/{{ Auth::user()->foto == null ? 'profile.png' : Auth::user()->foto  }}" class="rounded-circle" style="width: 150px;"
+    <img src="/img/profile/{{ Auth::user()->foto == null ? 'profile.png' : Auth::user()->foto  }}" class="rounded-circle" style="width: 150px;"
       alt="Avatar" />
 
   </center>
@@ -41,7 +41,7 @@
 
                 <div class="col-12">
                   <div class="form-group">
-                    <label 
+                    <label
                       >Kode Anggota</label
                     >
                     <input
@@ -152,5 +152,5 @@
     </div>
   </div>
 
-  
+
 @endsection

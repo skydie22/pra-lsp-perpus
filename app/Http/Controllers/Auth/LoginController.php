@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -48,9 +49,14 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        $user->update([
-            'terakhir_login' =>  Carbon::now()
-        ]);
+        // $user->update([
+        //     'terakhir_login' =>  Carbon::now()
+        // ]);
+
+        tap(User::where('id' , Auth::user()->id)->update([
+            'terakhir_login' => Carbon::now()
+        ]));
+
 
         if ($user->verif == 'unverified') {
             Auth::logout();

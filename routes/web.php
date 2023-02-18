@@ -84,7 +84,7 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
     //admin
     Route::get('/administrator' , [UserController::class , 'indexAdmin'])->name('admin.data.admin');
     Route::post('/administrator/add' , [UserController::class , 'storeAdmin'])->name('admin.add.admin');
-    Route::get('/administrator/update/{id}', [UserController::class , 'updateAdmin'])->name('admin.update.admin');
+    Route::put('/administrator/update/{id}', [UserController::class , 'updateAdmin'])->name('admin.update.admin');
     Route::delete('/administrator/delete/{id}' , [UserController::class , 'destroyAdmin'])->name('admin.delete.admin');
     //peminjaman
     Route::get('/datapeminjaman' , [AdminPeminjamanController::class , 'index'])->name('admin.data.peminjaman');
@@ -115,5 +115,5 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
     Route::post('/laporan/excel/anggota/cetak', [LaporanKontroller::class, 'exportAnggotaExcel'])->name('admin.cetak.anggota.excel');
 
 
- 
+
  });
